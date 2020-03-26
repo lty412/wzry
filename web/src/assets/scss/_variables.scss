@@ -1,0 +1,68 @@
+// ------------------ color begin ----------------
+$colors: (
+  "primary": #db9e3f,
+  "info": #4b67af,
+  "write": #fff,
+  "light": #f9f9f9,
+  "light-1": #d4d9de,
+  "grey": #999,
+  "grey-1": #666,
+  "dark-1": #343440,
+  "dark-2": #222,
+  "black": #000,
+);
+$border-color: map-get($colors, 'light-1');
+// ------------------ color end ----------------
+
+// ------------------ font-size begin ----------------
+$base-font-size: 1rem; // 基本像素
+$font-sizes: (
+  xxs: .615385, // 8px
+  xs: .769231, // 10px
+  sm: .923077, // 12px
+  md: 1, // 13px
+  lg: 1.076923, // 14px
+  xl: 1.230769, // 16px
+);
+// ------------------ font-size end ----------------
+
+// ------------------ flex begin ----------------
+// 主轴 对齐方式
+$flex-jc: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  between: space-between,
+  around: space-around,
+);
+
+// 交叉轴 对齐方式
+$flex-ai: (
+  start: flex-start,
+  end: flex-end,
+  center: center,
+  stretch: stretch,
+);
+// ------------------ flex end ----------------
+
+// ------------------ spacing 边距 begin ----------------
+$spacing-types: ( 
+  m: margin, 
+  p: padding 
+);
+$spacing-directions: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left,
+);
+$spacing-base-size: 1rem; // 基础尺寸
+$spacing-sizes: (
+  0: 0,
+  1: 0.25,
+  2: 0.5,
+  3: 1,
+  4: 1.5,
+  5: 3,
+);
+// ------------------ spacing 边距 begin ----------------
