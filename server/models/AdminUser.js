@@ -6,7 +6,7 @@ const schema = new mongoose.Schema({
     type: String, 
     select: false, // 不让密码被查出来
     set(val) {
-      return require('bcrypt').hashSync(val, 10)
+      return require('bcryptjs').hashSync(val, 10)
     }
   },
 })

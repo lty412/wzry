@@ -24,7 +24,6 @@ export default {
   data() {
     return {
       model: {
-        items: []
       },
     }
   },
@@ -32,18 +31,22 @@ export default {
   methods: {
     // 新建/编辑保存操作
     async save () {
-      let res
-      if (this.id) {
-        res = await this.$http.put(`rest/admin_user/${this.id}`, this.model)
-      } else {
-        res = await this.$http.post('rest/admin_user', this.model)
+      try {
+        let res
+        if (this.id) {
+          res = await this.$http.put(`rest/admin_user/${this.id}`, this.model)
+        } else {
+          res = await this.$http.post('rest/admin_user', this.model)
+        }
+        console.log('res:', res)
+        this.$message({
+          type: 'success',
+          message: '保存成功'
+        })
+        this.$router.push('/admin_user/list')
+      } catch(e) {
+        console.log('error:', e)
       }
-      console.log('res:', res)
-      this.$message({
-        type: 'success',
-        message: '保存成功'
-      })
-      this.$router.push('/admin_user/list')
     },
 
     // 获取详情

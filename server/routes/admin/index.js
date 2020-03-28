@@ -72,7 +72,9 @@ module.exports = app => {
     assert(user, 422, '用户名不存在')
     
     // 2.校验密码
-    const isVaild = require('bcrypt').compareSync(password, user.password)
+    const bcrypt = require('bcryptjs')
+    const userPassword = bcrypt.hashSync(user.password, 10)  // 先把用户输入的密码散列加密再做对比
+    const isVaild = bcrypt.compareSync(password, userPassword)
     assert(isVaild, 422, '密码错误')
  
     // 3.返回token
