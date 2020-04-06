@@ -28,29 +28,37 @@
     </div>
     <!-- end of nav icon -->
 
-    <m-list-card icon="LC_icon_menu_line" title="新闻资讯" :categories="newsCats">
+    <!-- 新闻资讯 -->
+    <m-list-card icon="caidan" title="新闻资讯" :categories="newsCats">
       <template #items="{category}">
-        <div class="py-2 fs-lg d-flex" v-for="(news, i) in category.newsList" :key="i">
+        <router-link tag="div" :to="`/articles/${news._id}`" class="py-2 fs-lg d-flex" v-for="(news, i) in category.newsList" :key="i">
           <span class="text-info">[{{news.categoryName}}]</span>
           <span class="px-1">|</span>
           <span class="flex-1 text-dark-1 pr-2 text-ellipsis">{{news.title}}</span>
           <span class="text-grey-1 fs-sm">{{news.createdAt | date}}</span>
-        </div>
+        </router-link>
       </template>
     </m-list-card>
 
-    <m-card icon="LC_icon_menu_line" title="英雄列表"></m-card>
-
-    <p>fsdggggggggggg</p>
-    <p>fsdggggggggggg</p>
-    <p>fsdggggggggggg</p>
-    <p>fsdggggggggggg</p>
-    <p>fsdggggggggggg</p>
-    <p>fsdggggggggggg</p>
-    <p>fsdggggggggggg</p>
-    <p>fsdggggggggggg</p>
-    <p>fsdggggggggggg</p>
-
+    <!-- 英雄列表 -->
+    <m-list-card icon="yingxiongbang" title="英雄列表" :categories="heroesCats">
+      <template #items="{category}">
+        <div class="hero-list d-flex flex-wrap">
+          <router-link tag="div" :to="`/heroes/${hero._id}`" class="hero-item p-2 text-center" v-for="(hero, i) in category.heroList" :key="i">
+            <img :src="hero.avatar" class="w-100">
+            <span>{{hero.name}}</span>
+          </router-link>
+        </div>
+      </template>
+    </m-list-card>
+    
+    <!-- 精彩视频 -->
+    <m-list-card icon="yingxiongbang" title="精彩视频">
+    </m-list-card>
+    
+    <!-- 图文攻略 -->
+    <m-list-card icon="yingxiongbang" title="图文攻略">
+    </m-list-card>
     
   </div>
 </template>
@@ -71,7 +79,8 @@ export default {
           el: '.pagination-home'
         }
       },
-      newsCats: []
+      newsCats: [],
+      heroesCats: []
     }
   },
 
@@ -79,11 +88,17 @@ export default {
     async fetchNewsCats() {
       const res = await this.$http.get('news/list')
       this.newsCats = res.data
+    },
+    
+    async fetchHeroCats() {
+      const res = await this.$http.get('heroes/list')
+      this.heroesCats = res.data
     }
   },
 
   created() {
     this.fetchNewsCats()
+    this.fetchHeroCats()
   }
 }
 </script>
@@ -109,6 +124,12 @@ export default {
       &:nth-child(4n) {
         border-right: none;
       }
+    }
+  }
+  .hero-list {
+    margin: 0 -0.5rem;
+    .hero-item {
+      width:20%;
     }
   }
 </style>

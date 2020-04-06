@@ -2,13 +2,19 @@
 $colors: (
   "primary": #db9e3f,
   "info": #4b67af,
+  "blue": #4394e4,
+  "blue-1": #1f3695,
+  "danger": #791a16,
   "write": #fff,
+  "write-1": #fcfcfc,
+  "write-2": #eceef0,
   "light": #f9f9f9,
   "light-1": #d4d9de,
   "grey": #999,
   "grey-1": #666,
   "dark-1": #343440,
   "dark-2": #222,
+  "black-1": #131528,
   "black": #000,
 );
 $border-color: map-get($colors, 'light-1');
@@ -23,6 +29,7 @@ $font-sizes: (
   md: 1, // 13px
   lg: 1.076923, // 14px
   xl: 1.230769, // 16px
+  // xxl: 18px
 );
 // ------------------ font-size end ----------------
 

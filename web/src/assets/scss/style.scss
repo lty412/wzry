@@ -16,6 +16,9 @@ body {
 a {
   color: #999;
 }
+p {
+  line-height: 1.5em;
+}
 
 // ------------------ color begin ----------------
 @each $colorKey, $color in $colors {
@@ -39,6 +42,13 @@ a {
 @each $sizeKey, $size in $font-sizes {
   .fs-#{$sizeKey} {
     font-size: $size * $base-font-size;
+  }
+}
+
+// font-weight
+@each $var in (400, 500, bold) {
+  .text-#{$var} {
+    font-weight: $var;
   }
 }
 
@@ -130,6 +140,21 @@ a {
   font-size: map-get($font-sizes , 'sm') * $base-font-size;
   -webkit-font-smoothing: antialiased;
   padding: .2rem .6rem;
+  &.btn-lg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    i {
+      color: map-get($colors, 'primary');
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin-right: .5rem;
+    }
+    background: map-get($colors, 'write-1');
+    border: 1px solid map-get($colors, 'write-2');
+    padding: .8rem 1rem;
+    font-size: 1rem;
+  }
 }
 // nav
 .nav {
@@ -166,5 +191,12 @@ a {
     width: .769231rem;
     height: .769231rem;
     background-position: 38.577% 52.076%;
+  }
+}
+
+// borders
+@each $dir in (top, right, bottom, left) {
+  .border-#{$dir} {
+    border-#{$dir}: 1px solid $border-color;
   }
 }

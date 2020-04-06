@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="topbar bg-black py-2 px-3 d-flex ai-center">
+    <div class="topbar bg-black-1 py-2 px-3 d-flex ai-center">
       <img src="../assets/images/logo.png" height="30">
       <div class="px-2 flex-1">
         <div class="text-write">

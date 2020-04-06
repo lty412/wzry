@@ -7,7 +7,7 @@ module.exports = app => {
   const Article = mongoose.model('Article')
   const Hero = mongoose.model('Hero')
 
-  // 导入新闻数据  --  mock
+  // 导入官网新闻数据  --  mock
   router.get('/news/init', async(req, res) => {
     const parent = await Category.findOne({
       name: '新闻分类'
@@ -78,7 +78,7 @@ module.exports = app => {
     res.send(cats)
   })
 
-  // 导入英雄数据  --  mock
+  // 导入官网英雄数据  --  mock
   router.get('/heroes/init', async(req, res) => {
     // 先删除原来的英雄列表再录入
     await Hero.deleteMany({})
@@ -100,6 +100,52 @@ module.exports = app => {
     }
     res.send(await Hero.find())
 
+  })
+
+   // 英雄列表接口  --  mock
+   router.get('/heroes/list', async(req, res) => {
+    // 使用聚合查询
+    const parent = await Category.findOne({
+      name: '英雄分类'
+    })
+    const cats = await Category.aggregate([
+      {$match: {parent: parent._id}},  // $match 相当于条件查询where 
+      {
+        $lookup: {
+          from: 'heroes',
+          localField: '_id',
+          foreignField: 'categories',
+          as: 'heroList'
+        }
+      }
+    ])
+    const subCats = cats.map(v => v._id)
+    cats.unshift({
+      name: '热门',
+      heroList: await Hero.find().where({
+        categories: {$in: subCats}
+      }).limit(10).lean()
+    })
+    
+    res.send(cats)
+  })
+
+  // 文章详情
+  router.get('/articles/:id', async(req, res) => {
+    const article = await Article.findById(req.params.id).lean()
+    article.related = await Article.find().where({
+      categories: { $in:  article.categories }
+    }).limit(2)
+    res.send(article)
+  })
+
+  // 英雄详情
+  router.get('/heroes/:id', async(req, res) => {
+    const data = await Hero
+      .findById(req.params.id)
+      .populate('categories items1 items2 partners.hero beRestrain.hero restrainWho.hero')  // 关联查询，返回完整json对象
+      .lean()
+    res.send(data)
   })
 
 

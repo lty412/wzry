@@ -8,6 +8,8 @@ app.use(require('cors')())
 app.use(express.json())
 
 // 托管静态文件
+app.use('/admin', express.static(__dirname + '/admin')) 
+app.use('/', express.static(__dirname + '/web')) 
 app.use('/uploads', express.static(__dirname + '/uploads')) 
 
 require('./plugins/db')(app)

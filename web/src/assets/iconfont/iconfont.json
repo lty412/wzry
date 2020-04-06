@@ -6,32 +6,46 @@
   "description": "",
   "glyphs": [
     {
-      "icon_id": "637630",
-      "name": "LC_icon_menu_line",
-      "font_class": "LC_icon_menu_line",
-      "unicode": "e62a",
-      "unicode_decimal": 58922
-    },
-    {
-      "icon_id": "1375630",
-      "name": "hero",
-      "font_class": "hero",
-      "unicode": "e664",
-      "unicode_decimal": 58980
-    },
-    {
-      "icon_id": "6786330",
+      "icon_id": "1599205",
       "name": "视频",
       "font_class": "shipin",
-      "unicode": "e71d",
-      "unicode_decimal": 59165
+      "unicode": "e659",
+      "unicode_decimal": 58969
     },
     {
-      "icon_id": "11106924",
-      "name": "三 点",
-      "font_class": "sandian",
-      "unicode": "e68f",
-      "unicode_decimal": 59023
+      "icon_id": "1850595",
+      "name": "英雄榜",
+      "font_class": "yingxiongbang",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
+      "icon_id": "3652167",
+      "name": "菜单",
+      "font_class": "caidan",
+      "unicode": "e501",
+      "unicode_decimal": 58625
+    },
+    {
+      "icon_id": "6797933",
+      "name": "Artifact-英雄-small",
+      "font_class": "Artifact-yingxiong-small",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "8705235",
+      "name": "三点",
+      "font_class": "sandian-copy",
+      "unicode": "e503",
+      "unicode_decimal": 58627
+    },
+    {
+      "icon_id": "11906471",
+      "name": "返 回",
+      "font_class": "fanhui2",
+      "unicode": "e69a",
+      "unicode_decimal": 59034
     }
   ]
 }
