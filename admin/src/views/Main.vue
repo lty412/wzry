@@ -61,6 +61,11 @@
       
       <el-main>
         <router-view :key="$route.path"></router-view>
+        <el-row v-if="$route.path === '/'">
+          <el-col :span="24" style="text-align: center">
+            欢迎来到王者荣耀管理后台
+          </el-col>
+        </el-row>
       </el-main>
     </el-container>
   </el-container>
