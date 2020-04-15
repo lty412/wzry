@@ -56,7 +56,7 @@
             <el-dropdown-item>删除</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
-        <span>王小虎</span>
+        <span>欢迎 {{userName}}</span>
       </el-header>
       
       <el-main>
@@ -71,6 +71,20 @@
   </el-container>
 </template>
 
+<script>
+  export default {
+    data() {
+      return {
+        userName: '主人'
+      }
+    },
+
+    created() {
+      this.userName = localStorage.getItem('userName')
+    }
+  };
+</script>
+
 <style>
   .el-header {
     background-color: #B3C0D1;
@@ -82,18 +96,3 @@
     color: #333;
   }
 </style>
-
-<script>
-  export default {
-    data() {
-      const item = {
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      };
-      return {
-        tableData: Array(20).fill(item)
-      }
-    }
-  };
-</script>
