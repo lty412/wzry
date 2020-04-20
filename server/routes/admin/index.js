@@ -59,7 +59,8 @@ module.exports = app => {
   const upload = multer({ dest: __dirname + '/../../uploads' })
   app.post('/admin/api/upload', authMiddleware(), upload.single('file'), async(req, res) => {
     const file = req.file
-    file.url = `https://lty.xmodules.xyz/uploads/${file.filename}`
+    file.url = `https://lty.xmodules.xyz/uploads/${file.filename}`    // 线上上传地址
+    // file.url = `http://localhost:3000/uploads/${file.filename}`    // 本地上传地址  
     res.send(file)
   })
   /***************  上传图片的接口  end **************/

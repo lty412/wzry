@@ -1,14 +1,8 @@
 <template>
   <div>
-    <swiper :options="swiperOption">
-      <swiper-slide>
-        <img class="w-100" src="../assets/images/5f8c4cc1b6cf04db1d83396f28dc2246.jpeg" alt="">
-      </swiper-slide>
-      <swiper-slide>
-        <img class="w-100" src="../assets/images/6b8a9046515ea4dd127070105069a134.jpeg" alt="">
-      </swiper-slide>
-      <swiper-slide>
-        <img class="w-100" src="../assets/images/61355fe276ff9b35a4943f8fe1b73f85.jpeg" alt="">
+    <swiper :options="swiperOption" v-if="banners">
+      <swiper-slide v-for="(ban, index) in banners.items" :key="index">
+        <img class="w-100" :src="ban.image" alt="">
       </swiper-slide>
       <div class="swiper-pagination pagination-home text-right px-3 pb-2" slot="pagination"></div>
     </swiper>
@@ -79,12 +73,18 @@ export default {
           el: '.pagination-home'
         }
       },
+      banners: [],
       newsCats: [],
       heroesCats: []
     }
   },
 
   methods: {
+    async fetchBanners() {
+      const res = await this.$http.get('ads/list')
+      this.banners = res.data
+    },
+
     async fetchNewsCats() {
       const res = await this.$http.get('news/list')
       this.newsCats = res.data
@@ -97,6 +97,7 @@ export default {
   },
 
   created() {
+    this.fetchBanners()
     this.fetchNewsCats()
     this.fetchHeroCats()
   }

@@ -4,8 +4,15 @@ module.exports = app => {
   // 初始化新闻列表的接口路由，mock 数据
   const mongoose = require('mongoose')
   const Category = mongoose.model('Category')
+  const Ad = mongoose.model('Ad')
   const Article = mongoose.model('Article')
   const Hero = mongoose.model('Hero')
+
+  // 首页banner轮播图
+  router.get('/ads/list', async(req, res) => {
+    const ads = await Ad.findById('5e9d80595ed9aefcecfbf3fa').lean()
+    res.send(ads)
+  })
 
   // 导入官网新闻数据  --  mock
   router.get('/news/init', async(req, res) => {
