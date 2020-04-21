@@ -10,7 +10,7 @@ module.exports = app => {
 
   // 首页banner轮播图
   router.get('/ads/list', async(req, res) => {
-    const ads = await Ad.findById('5e9d80595ed9aefcecfbf3fa').lean()
+    const ads = await Ad.findById('5e9d7c735dd97d5b5dd172fc').lean()    // 本地 id 为 5e9d80595ed9aefcecfbf3fa
     res.send(ads)
   })
 
